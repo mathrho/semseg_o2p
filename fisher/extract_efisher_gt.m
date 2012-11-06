@@ -1,0 +1,77 @@
+addpath('..\src\');
+addpath('..\external_src\');
+
+%% Read from directories
+im_dir = '../VOC_experiment/VOC/JPEGImages/' ;
+gtmasks_dir = '../VOC_experiment/VOC/MySegmentsMat/ground_truth_sp_approx/' ;
+% gtmasks_dir = '../VOC_experiment/VOC/MySegmentsMat/ground_truth/' ;
+exp_dir = '../VOC_experiment/VOC/' ;
+
+%% Save to directory
+fishgt_dir = '../VOC_experiment/VOC/MyMeasurements/ground_truth_sp_approx_eFISHER_GMM128_f_g' ;
+
+%% Define variables
+load('voc2011_model_enrichedsift-128GMM.mat') ;
+model.ss = 1 ;
+gt_imgsets = {'all_gt_segm_mirror', 'all_gt_segm'};
+
+%% Run this code to extract features from CPMC regions
+% s = RandStream('mt19937ar','Seed','shuffle');
+% RandStream.setGlobalStream(s);
+
+%for qq = 1 : numel(gt_imgsets)
+for qq = 2 : 2
+img_names = textread([exp_dir 'ImageSets/Segmentation/' gt_imgsets{qq} '.txt'], '%s');
+% img_names = shuffle(img_names) ;
+
+%for i = 1 : numel(img_names)
+for i = numel(img_names) : -1 : 1
+%     eta(i, numel(img_names)) ;
+    disp(['img: ' num2str(i) '/' num2str(numel(img_names))]);
+    img_name = img_names{i};
+    filename_to_save = [fishgt_dir '/' img_name '.mat'];
+    
+    if exist(filename_to_save, 'file')
+        continue ;
+    end
+
+    imfilnam = [im_dir '/' img_name '.jpg'];    
+    imc = imread(imfilnam) ;
+    
+    [frames, sift] = vl_phow_enriched(imc, 'Step', model.ss) ;
+    nzix = sum(sift, 1) ~= 0;     % OPTIONAL
+    sift = sift(:, nzix); % OPTIONAL, although if there are too many 0 vectors, performance decreases significantly
+    sift = normalizeColsL2(double(sift)); % OPTIONAL
+    sift = model.pcamap' * sift;
+    frames = frames(:, nzix);
+        
+    %% Load CPMC regions for the current image
+    msk = load([gtmasks_dir '/' img_name '.mat']) ;
+    pbmsk = load([exp_dir 'PB/'  img_name '_PB.mat']) ;
+    
+    %% Extract Fisher Vectors per mask
+    fish = zeros(2 * 2 * model.numWords * model.nPCADims, size(msk.masks, 3), 'single') ;
+    for dd = 1 : size(msk.masks, 3)
+        
+        segim = msk.masks(:, :, dd) ;
+        ix = logical(segim(sub2ind(size(segim), frames(2, :), frames(1, :)))) ;
+        
+        %% FOREGROUND
+        segsift = sift(:, ix) ;
+        fishFG = fisher(model.gmmfilename, segsift) ;
+        
+        %% BACKGROUND
+        segsift = sift(:, ~ix) ;
+        fishBG = fisher(model.gmmfilename, segsift) ;
+        
+        fish(:, dd) = [fishFG; fishBG] ;
+        
+    end
+    D = single(fish) ;
+    
+    %% Save Fisher vectors from Figure Ground hypotheses
+    save('-v7.3', [fishgt_dir '/' img_name '.mat'], 'D') ;
+    
+end
+
+end

@@ -2,11 +2,10 @@ function voc_train_models(feat_collection_learning, weights, lc)
     addpath('../src/');
     addpath('../src/SegmBrowser/');
     addpath('../external_src/');
-    %addpath('../external_src/vlfeats/toolbox/mex/mexw64/');
-    addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
-    addpath('../external_src/vlfeats/toolbox/sift/');
-    addpath('../external_src/vlfeats/toolbox/misc/');
-    addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
+%     addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
+%     addpath('../external_src/vlfeats/toolbox/sift/');
+%     addpath('../external_src/vlfeats/toolbox/misc/');
+%     addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
     addpath('../external_src/ndSparse/');
     addpath('../external_src/VOCcode/');
     addpath('../src/liblinear-custom/matlab/');
@@ -16,7 +15,7 @@ function voc_train_models(feat_collection_learning, weights, lc)
     % fisher_gmm_128
     % all_feats_pca_noncent_5000_Plus_fisher_gmm_128
     %DefaultVal('*feat_collection_learning', '''all_feats_pca_noncent_5000''');
-    DefaultVal('*feat_collection_learning', '''all_feats_pca_noncent_5000_Plus_fisher_gmm_128''');
+    DefaultVal('*feat_collection_learning', '''fisher_gmm_128''');
     if(~isempty(weights))
         str_weights = strjoin(weights, '_');
         feat_collection_learning = [feat_collection_learning '_Weights_' str_weights];

@@ -1,6 +1,6 @@
 function o2p_extract_feats(exp_dir, mask_type, feat_collection, img_names)
-    s = RandStream('mt19937ar','Seed',1234);
-    RandStream.setGlobalStream(s);
+%     s = RandStream('mt19937ar','Seed',1234);
+%     RandStream.setGlobalStream(s);
 
     feat_types = feat_config(feat_collection);
     for i=1:numel(feat_types)

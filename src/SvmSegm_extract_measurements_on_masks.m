@@ -138,8 +138,8 @@ function SvmSegm_extract_measurements_on_masks(mask_type, type, pars, img_names,
 
     %t = tic();    
     
-    parfor i=1:numel(img_names)        
-    %for i=1:numel(img_names)     
+    %parfor i=1:numel(img_names)        
+    for i=1:numel(img_names)     
         img_name = img_names{i};
         
         filename_to_save = [exp_dir 'MyMeasurements/' dir_name img_name '.mat'];

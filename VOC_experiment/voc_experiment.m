@@ -2,10 +2,10 @@ function voc_experiment()
     addpath('../src/');
     addpath('../src/SegmBrowser/');
     addpath('../external_src/');
-    addpath('../external_src/vlfeats/toolbox/mex/mexa64/');    
-    addpath('../external_src/vlfeats/toolbox/sift/');
-    addpath('../external_src/vlfeats/toolbox/misc/');
-    addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
+%     addpath('../external_src/vlfeats/toolbox/mex/mexa64/');    
+%     addpath('../external_src/vlfeats/toolbox/sift/');
+%     addpath('../external_src/vlfeats/toolbox/misc/');
+%     addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
     addpath('../external_src/ndSparse/');
     addpath('../external_src/VOCcode/');
     addpath('../src/liblinear-custom/matlab/');
@@ -23,7 +23,8 @@ function voc_experiment()
     gt_mask_type = 'ground_truth_sp_approx';
     mask_type = 'CPMC_segms_150_sp_approx';
     
-    gt_imgsets = {'all_gt_segm_mirror', 'all_gt_segm'};
+    %gt_imgsets = {'all_gt_segm_mirror', 'all_gt_segm'};
+    gt_imgsets = {'all_gt_segm', 'all_gt_segm_mirror'};
 
     % If set as true, only PCA versions of segment features will be stored in disk,
     % saving 250 gigabytes. However, if you plan to use more
@@ -31,10 +32,10 @@ function voc_experiment()
     BUDGET_HARD_DRIVE = false;        
     
     % create multiple threads (set how many you have)
-    N_THREADS = 6;
-    if(matlabpool('size')~=N_THREADS)
-        matlabpool('open', N_THREADS);
-    end    
+%     N_THREADS = 6;
+%     if(matlabpool('size')~=N_THREADS)
+%         matlabpool('open', N_THREADS);
+%     end    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
