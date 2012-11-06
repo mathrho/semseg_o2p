@@ -1,0 +1,10 @@
+
+# Data folders #
+###################
+VOC_experiment/benchmark_RELEASE
+VOC_experiment/cpmc_segms_150
+VOC_experiment/imgsets_voc11
+VOC_experiment/sift_voc_exp
+VOC_experiment/VOC
+VOC_experiment/VOCdevkit
+VOC_experiment/tarballs

@@ -1,0 +1,60 @@
+---------------------------------------------------------------
+
+Accuracy for each class (intersection/union measure)
+      background: 82.919%
+       aeroplane: 62.995%
+         bicycle: 20.776%
+            bird: 33.627%
+            boat: 38.581%
+          bottle: 37.013%
+             bus: 55.653%
+             car: 50.846%
+             cat: 41.419%
+           chair:  6.668%
+             cow: 28.189%
+     diningtable: 16.939%
+             dog: 16.307%
+           horse: 23.049%
+       motorbike: 45.034%
+          person: 44.852%
+     pottedplant: 32.435%
+           sheep: 33.851%
+            sofa: 20.128%
+           train: 45.882%
+       tvmonitor: 45.889%
+-------------------------
+Average accuracy: 37.288%
+
+ans =
+
+   37.2881
+ ---------------------------------------------------------------
+ 
+ Accuracy for each class (intersection/union measure)
+      background: 82.737%
+       aeroplane: 63.313%
+         bicycle: 21.427%
+            bird: 40.056%
+            boat: 37.821%
+          bottle: 32.567%
+             bus: 54.045%
+             car: 50.809%
+             cat: 40.794%
+           chair:  6.124%
+             cow: 27.006%
+     diningtable: 13.329%
+             dog: 18.887%
+           horse: 25.674%
+       motorbike: 41.974%
+          person: 45.734%
+     pottedplant: 32.259%
+           sheep: 31.759%
+            sofa: 19.112%
+           train: 44.362%
+       tvmonitor: 39.999%
+-------------------------
+Average accuracy: 36.657%
+
+ans =
+
+   36.6566
