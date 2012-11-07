@@ -2,10 +2,10 @@ function voc_test_models(feat_collection, weights)
     addpath('../src/');
     addpath('../src/SegmBrowser/');
     addpath('../external_src/');
-    addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
-    addpath('../external_src/vlfeats/toolbox/sift/');
-    addpath('../external_src/vlfeats/toolbox/misc/');
-    addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
+%     addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
+%     addpath('../external_src/vlfeats/toolbox/sift/');
+%     addpath('../external_src/vlfeats/toolbox/misc/');
+%     addpath('../external_src/vlfeats/toolbox/mex/mexa64/');
     addpath('../external_src/ndSparse/');
     addpath('../external_src/VOCcode/');
     addpath('../src/liblinear-custom/matlab/');
@@ -17,7 +17,7 @@ function voc_test_models(feat_collection, weights)
     % all_feats_pca_noncent_5000
     % fisher_gmm_128
     % all_feats_pca_noncent_5000_Plus_fisher_gmm_128
-    DefaultVal('*feat_collection', '''fisher_gmm_128''');
+    DefaultVal('*feat_collection', '''all_feats_pca_noncent_5000''');
     if(~isempty(weights))
         str_weights = strjoin(weights, '_');
         feat_collection = [feat_collection '_Weights_' str_weights];
