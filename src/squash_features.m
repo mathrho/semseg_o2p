@@ -5,7 +5,11 @@ function [Feats] = squash_features(Feats, type)
         power = 0.75;
         for i = 1:size(Feats,2)
             Feats(:,i) = sign(Feats(:,i)).*abs(Feats(:,i)).^power;
-        end        
+        end
+    elseif(strcmp(type, 'sqrt'))
+        for i = 1:size(Feats,2)
+            Feats(:,i) = sign(Feats(:,i)).*sqrt(abs(Feats(:,i)));
+        end
     elseif(strcmp(type, 'inv_power'))
         power = 1/0.75;
         for i = 1:size(Feats,2)

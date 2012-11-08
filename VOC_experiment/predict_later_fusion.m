@@ -11,6 +11,9 @@ elseif(strcmp(type, 'geo_mean'))
 elseif(strcmp(type, 'wmean'))
     w = repmat([1, 0.36]', [1, size(preds, 2), size(preds, 3)]);
     fpreds = squeeze(wmean(preds, w, 1));
+elseif(strcmp(type, 'w_geo_mean'))
+    w = repmat([1, 0.43]', [1, size(preds, 2), size(preds, 3)]);
+    fpreds = squeeze(wgeomean(preds, w, 1));
 else
     error('not this fusion method!');
 end

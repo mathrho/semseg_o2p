@@ -115,7 +115,8 @@ function voc_test_models_later_fusion(feat_collections)
         %save('y_preds.mat', 'y_preds');
         y_preds(y_preds<0) = eps;
         %y_pred = predict_later_fusion(y_preds, 'geo_mean');
-        y_pred = predict_later_fusion(y_preds, 'wmean');
+        %y_pred = predict_later_fusion(y_preds, 'wmean');
+        y_pred = predict_later_fusion(y_preds, 'w_geo_mean');
         
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

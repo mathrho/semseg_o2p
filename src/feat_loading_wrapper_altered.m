@@ -55,7 +55,7 @@ function [Feats, dims, scaling, y, dct_scaling] = feat_loading_wrapper_altered(b
   if(~Feats_provided)
     [Feats, dims] = browser.get_whole_feats(whole_ids, feats, scal_type, weights, lookup_table_encoding, n_dct_dims);
     if(power_scaling)
-        Feats = squash_features(Feats, 'power');        
+        Feats = squash_features(Feats, 'power');
     end
   end      
   
