@@ -7,6 +7,7 @@ function [feats, power_scaling, input_scaling_type, feat_weights, dim_div] = fea
      'SIFT_GRAY_f_g_pca_5000_noncent', ...
      'LBP_f_pca_2500_noncent', ...
      'Fisher_gmm_128', ...
+     'eFISHER_GMM128_f_g', ...
     };
    
    idx_weights = strfind(feat_collection, '_Weights_');
@@ -39,6 +40,12 @@ function [feats, power_scaling, input_scaling_type, feat_weights, dim_div] = fea
        feats = feats([7]);
        power_scaling = false;
        input_scaling_type = 'norm_2';
+       feat_weights = [];
+       dim_div = {[]};
+   elseif(strcmp(feat_collection, 'eFisher_gmm_128_f_g'))
+       feats = feats([8]);
+       power_scaling = false;
+       input_scaling_type = [];
        feat_weights = [];
        dim_div = {[]};
    elseif(strcmp(feat_collection, 'all_feats_pca_noncent_5000_Plus_fisher_gmm_128'))

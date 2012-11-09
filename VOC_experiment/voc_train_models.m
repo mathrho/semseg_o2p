@@ -15,7 +15,7 @@ function voc_train_models(feat_collection_learning, weights, lc)
     % fisher_gmm_128
     % all_feats_pca_noncent_5000_Plus_fisher_gmm_128
     %DefaultVal('*feat_collection_learning', '''all_feats_pca_noncent_5000''');
-    DefaultVal('*feat_collection_learning', '''all_feats_pca_noncent_5000''');
+    DefaultVal('*feat_collection_learning', '''eFisher_gmm_128_f_g''');
     if(~isempty(weights))
         str_weights = strjoin(weights, '_');
         feat_collection_learning = [feat_collection_learning '_Weights_' str_weights];
