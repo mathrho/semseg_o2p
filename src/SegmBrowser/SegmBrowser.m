@@ -314,7 +314,7 @@ classdef SegmBrowser
                   % display('Found NaN values in Features!! Setting them to 0' )
                   D(isnan(D)) = 0;
                 end
-                
+
               else
                 
                 if(strcmp(feat_types{j}(1:6), 'Fisher'))
