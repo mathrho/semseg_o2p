@@ -9,3 +9,6 @@ VOC_experiment/VOC
 VOC_experiment/VOCdevkit
 VOC_experiment/tarballs
 VOC_experiment/submits
+
+
+*.asv
