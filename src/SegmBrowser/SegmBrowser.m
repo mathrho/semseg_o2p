@@ -301,18 +301,18 @@ classdef SegmBrowser
                   feat_type_folder = strrep(feat_types{j}(7:end), '_', '');
                   D = myload([exp_dir the_fisher_folder mask_type '/' feat_type_folder ...
                       '/' img_names{un_img_ids(i)} '.mat'], 'fish');
-                  
-                  if(any(any(any(isnan(full(D))))))
-                    %display(['Found NaN values in Features!! - file: ' img_names{un_img_ids(i)}]);
-                    D(:, sum(isnan(full(D)))>0) = 0;
-                  end
-                  
-                  if(any(any(any(isinf(full(D))))))
-                    %display(['Found infinite values in Features!! - file: ' img_names{un_img_ids(i)}]);
-                    D(:, sum(isinf(full(D)))>0) = 0;
-                  end
                 else
                   D = myload([exp_dir the_folder mask_type '_' feat_types{j} '/' img_names{un_img_ids(i)} '.mat'], 'D');
+                end
+                
+                if(any(any(any(isinf(D)))))
+                  % display('Found infinity values in Features!! Setting them to 0' )
+                  D(isinf(D)) = 0;
+                end
+
+                if(any(any(any(isnan(D)))))
+                  % display('Found NaN values in Features!! Setting them to 0' )
+                  D(isnan(D)) = 0;
                 end
                 
               else
